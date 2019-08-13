@@ -29,6 +29,7 @@ pipeline {
             archiveArtifacts artifacts: 'build/libs/**/*.jar', fingerprint: true
         }
         cleanup {
+            sh 'gradle --stop'
             dir('build/libs') {
                 deleteDir()
             }

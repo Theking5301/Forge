@@ -7,6 +7,9 @@ pipeline {
             args "--name jenkins-${CONTAINER_NAME}"
         }
     }
+    environment {
+        GRADLE_OPTS = "-Dorg.gradle.daemon=false"
+    }
     stages {
         stage('Pre-Build') {
             steps {
@@ -29,7 +32,6 @@ pipeline {
             archiveArtifacts artifacts: 'build/libs/**/*.jar', fingerprint: true
         }
         cleanup {
-            sh './gradlew --stop'
             dir('build/libs') {
                 deleteDir()
             }

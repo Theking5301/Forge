@@ -29,7 +29,9 @@ pipeline {
             archiveArtifacts artifacts: 'build/libs/**/*.jar', fingerprint: true
         }
         cleanup {
-            deleteDir()
+            dir('build/libs') {
+                deleteDir()
+            }
         }
     }
 }

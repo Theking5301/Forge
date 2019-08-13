@@ -13,6 +13,7 @@ pipeline {
     stages {
         stage('Pre-Build') {
             steps {
+                sh 'rm -fR build/ .gradle'
                 sh 'chmod +x gradlew'
             }
         }

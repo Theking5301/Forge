@@ -1,4 +1,5 @@
 def CONTAINER_NAME = "Forge-Template" // Be aware that CONTAINER_NAME cannot contain space, which is not a valid docker container name
+env.JENKINS_NODE_COOKIE = 'dontKillMe'
 
 pipeline {
     agent {
@@ -29,7 +30,6 @@ pipeline {
             archiveArtifacts artifacts: 'build/libs/**/*.jar', fingerprint: true
         }
         cleanup {
-            sh 'gradle --stop'
             dir('build/libs') {
                 deleteDir()
             }

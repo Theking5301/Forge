@@ -4,7 +4,7 @@ pipeline {
     agent {
         docker {
             image 'openjdk:8u222-jdk-stretch'
-            args "--name jenkins-${CONTAINER_NAME}-development"
+            args "--name jenkins-${CONTAINER_NAME}-${env.BRANCH_NAME}"
         }
     }
     environment {
@@ -32,8 +32,12 @@ pipeline {
             archiveArtifacts artifacts: 'build/libs/**/*.jar', fingerprint: true
         }
         cleanup {
-            dir('build/libs') {
+            if (env.BRANCH_NAME == 'master') {
                 deleteDir()
+            } else {
+                dir('build/libs') {
+                    deleteDir()
+                }
             }
         }
     }

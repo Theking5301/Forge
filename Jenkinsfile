@@ -32,11 +32,13 @@ pipeline {
             archiveArtifacts artifacts: 'build/libs/**/*.jar', fingerprint: true
         }
         cleanup {
-            if (env.BRANCH_NAME == 'master') {
-                deleteDir()
-            } else {
-                dir('build/libs') {
+            steps {
+                if (env.BRANCH_NAME == 'master') {
                     deleteDir()
+                } else {
+                    dir('build/libs') {
+                        deleteDir()
+                    }
                 }
             }
         }

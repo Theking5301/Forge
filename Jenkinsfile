@@ -1,10 +1,10 @@
-def CONTAINER_NAME = "Forge-Template" // Be aware that CONTAINER_NAME cannot contain space, which is not a valid docker container name
+// def CONTAINER_NAME = "Forge-Template" // Be aware that CONTAINER_NAME cannot contain space, which is not a valid docker container name
 
 pipeline {
     agent {
         docker {
             image 'openjdk:8u222-jdk-stretch'
-            args "--name jenkins-${CONTAINER_NAME}-${env.BRANCH_NAME}"
+            // args "--name jenkins-${CONTAINER_NAME}-${env.BRANCH_NAME}"
         }
     }
     environment {

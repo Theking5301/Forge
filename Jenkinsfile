@@ -1,4 +1,5 @@
 def CONTAINER_NAME = "Forge-Template" // Be aware that CONTAINER_NAME cannot contain space, which is not a valid docker container name
+env.JENKINS_NODE_COOKIE = 'dontKillMe'
 
 pipeline {
     agent {
@@ -7,12 +8,13 @@ pipeline {
             args "--name jenkins-${CONTAINER_NAME}"
         }
     }
-    environment {
-        GRADLE_OPTS = "-Dorg.gradle.daemon=false"
-    }
+    /* environment {
+        GRADLE_OPTS = "-Dorg.gradle.daemon=false" // This environment variable aims to disable Gradle Daemon for piles of incompatible Gradle Daemons existence.
+    } */
     stages {
         stage('Pre-Build') {
             steps {
+                deleteDir()
                 sh 'chmod +x gradlew'
             }
         }

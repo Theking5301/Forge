@@ -14,7 +14,6 @@ pipeline {
     stages {
         stage('Pre-Build') {
             steps {
-                deleteDir()
                 sh 'chmod +x gradlew'
             }
         }

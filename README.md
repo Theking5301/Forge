@@ -32,7 +32,7 @@ In recent time, Jenkins announced a brand-new plugin called [Blue Ocean](https:/
 For open source project, you can take Blue Ocean as your first choice. 
 However, on the other hand, Blue Ocean doesn't support closed source project (private repository), so you should use traditional way to create Jenkins project.
 
-#### Blue Ocean Setup
+### Blue Ocean Setup
 1. Open Blue Ocean and click the **New Pipeline** button at the top-right side.
 2. Choose where you store your repository, we will take Github as the example.
 3. If you have never used Blue Ocean below, it will ask you to create a personal access. Click the **create access token here** link.
@@ -51,5 +51,5 @@ Now, Jenkins can only check your repository when you actively start a new build,
 If it shows a warning mark, it might because your Jenkins server hasn't installed Github plugin yet. Please refer to your server administrator to solve the problem.
 12. Ok, we have done our work. Try to commit some changes and enjoy the power of Jenkins' automatic integrations.
 
-#### Classic Jenkins Configurations
+### Classic Jenkins Configurations
 We will add this section in the future.

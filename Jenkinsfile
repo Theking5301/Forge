@@ -1,5 +1,3 @@
-// def CONTAINER_NAME = "Forge-Template" // Be aware that CONTAINER_NAME cannot contain space, which is not a valid docker container name
-
 pipeline {
     agent {
         docker {

@@ -20,15 +20,15 @@ pipeline {
             }
         }
         stage('Post-Build') {
-            steps {
-                parallel {
-                    stage('lint') {
+            parallel {
+                stage('lint') {
+                    steps {
                         sh './gradlew check'
                     }
-                    stage('Test') {
-                        steps {
-                            sh './gradlew test'
-                        }
+                }
+                stage('Test') {
+                    steps {
+                        sh './gradlew test'
                     }
                 }
             }

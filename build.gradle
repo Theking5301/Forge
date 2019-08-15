@@ -7,9 +7,13 @@ buildscript {
         classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
     }
 }
+
+plugins {
+    id 'java'
+    id 'pmd'
+}
 apply plugin: 'net.minecraftforge.gradle.forge'
 //Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
-apply plugin: 'checkstyle'
 
 version = "0.1.0-SNAPSHOT"
 group = "com.yourname.modid" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
@@ -31,10 +35,6 @@ minecraft {
     // simply re-run your setup task after changing the mappings to update your workspace.
     mappings = "snapshot_20171003"
     // makeObfSourceJar = false // an Srg named sources jar is made by default. uncomment this to disable.
-}
-
-test {
-    useJUnitPlatform()
 }
 
 dependencies {
@@ -79,5 +79,22 @@ processResources {
     // copy everything else except the mcmod.info
     from(sourceSets.main.resources.srcDirs) {
         exclude 'mcmod.info'
+    }
+}
+
+pmd {
+    toolVersion = '6.17.0'
+    pmdTest.enabled = false
+    ruleSetFiles = files('config/pmd/ruleset.xml')
+}
+
+test {
+    useJUnitPlatform()
+}
+
+tasks.withType(Pmd){
+    reports{
+        xml.enabled=true
+        html.enabled=true
     }
 }

@@ -20,17 +20,8 @@ pipeline {
             }
         }
         stage('Test') {
-            parallel {
-                stage('Check') {
-                    steps {
-                        sh './gradlew check'
-                    }
-                }
-                stage('Junit') {
-                    steps {
-                        sh './gradlew test'
-                    }
-                }
+            steps {
+                sh './gradlew test'
             }
         }
     }

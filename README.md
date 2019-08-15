@@ -46,7 +46,7 @@ The pipeline result should be success. If something goes wrong, double check you
 8. It seems that everything goes well in Jenkins, but we haven't finish our setup yet. 
 Now, Jenkins can only check your repository when you actively start a new build, so we should setup webhooks to let Jenkins start build when a push was made or a pull request was opened.
 9. Go to your github project's **Settings > Webhooks** page and click Add webhook button.
-10. Type **http:\[your Jenkins hosting URL\]/github-webhook/** in the Payload URL field and select **Send me everything** radio below. Then click the Add webhook button below.
+10. Type **http://\[your Jenkins hosting URL\]/github-webhook/** in the Payload URL field and select **Send me everything** radio below. Then click the Add webhook button below.
 11. If all things go well, you will see a green check mark in front of your newly created webhook indicating your setting is working.
 If it shows a warning mark, it might because your Jenkins server hasn't installed Github plugin yet. Please refer to your server administrator to solve the problem.
 12. Ok, we have done our work. Try to commit some changes and enjoy the power of Jenkins' automatic integrations.

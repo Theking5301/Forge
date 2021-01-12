@@ -1,10 +1,5 @@
 pipeline {
-    agent {
-        docker {
-            image 'openjdk:8u222-jdk-stretch'
-            // args "--name jenkins-${CONTAINER_NAME}-${env.BRANCH_NAME}"
-        }
-    }
+    agent any
     environment {
         GRADLE_OPTS = "-Dorg.gradle.daemon=false" // This environment variable aims to disable Gradle Daemon for piles of incompatible Gradle Daemons existence.
     }
